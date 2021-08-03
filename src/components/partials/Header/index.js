@@ -23,7 +23,7 @@ const Page = () => {
 				<PageContainer>
 					<Link to="/">
 						<div className="logoArea">
-							<img src={logo} />
+							<img src={logo} alt=""/>
 						</div>
 					</Link>
 					<div className="menuArea">
