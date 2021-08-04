@@ -6,6 +6,14 @@ import {Link} from 'react-router-dom';
 const Page = () => {
 	const [hideAccOpt, setHideAccOpt] = useState(true);
 	const [hideLangOpt, setHideLangOpt] = useState(true);
+
+	document.addEventListener('click', (e)=>{
+		let isValid = e.target.classList.contains('button') || e.target.classList.contains('fa-caret-down');
+		if (!isValid) {
+			setHideAccOpt(true);
+			setHideLangOpt(true);
+		}
+	});
 	const handleLangOpt = () => {
 		if (!hideAccOpt) {
 			setHideAccOpt(true);
@@ -18,6 +26,7 @@ const Page = () => {
 			}
 			setHideAccOpt(!hideAccOpt);
 	}
+
 	return (
 			<HeaderArea>
 				<PageContainer>

@@ -22,6 +22,11 @@ export const HeaderArea = styled.header`
 		}
 		li {
 			margin-right: 25px;
+			a {
+				&: hover {
+				color: #000;
+			}
+			}
 			.langOptions {
 				button {
 					border: 0;
@@ -60,6 +65,9 @@ export const HeaderArea = styled.header`
 				color: #fff;
 				cursor: pointer;
 				font-size: 1rem;
+				&: hover {
+					color: #000;
+				}
 				i {
 					margin-left: 7px;
 					font-size: 0.9rem;
