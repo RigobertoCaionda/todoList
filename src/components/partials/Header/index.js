@@ -3,7 +3,14 @@ import {HeaderArea} from './styled';
 import {PageContainer} from '../../mainComponents';
 import logo from '../../../images/logo.svg';
 import {Link} from 'react-router-dom';
+import {isLogged} from '../../../helpers/AuthHandler';
 const Page = () => {
+	let logged = isLogged();
+	/*if (logged) {
+		alert('Esta logado!');
+	}else {
+		alert('nao esta logado!');
+	}*/
 	const [hideAccOpt, setHideAccOpt] = useState(true);
 	const [hideLangOpt, setHideLangOpt] = useState(true);
 
@@ -44,13 +51,13 @@ const Page = () => {
 								<li>
 									<form method="GET" action="/make_search">
 										<input type="text" placeholder="Search" name="q"/>
-										<button type="submit"><i class="fas fa-search"></i></button>
+										<button type="submit"><i className="fas fa-search"></i></button>
 									</form>
 								</li>
 								<li>
 									<button className="button" onClick={handleMyAccountClick}>
 										My Account
-										<i class="fas fa-caret-down"></i>
+										<i className="fas fa-caret-down"></i>
 									</button>
 									{!hideAccOpt &&
 										<div className="myAccountOptions">
@@ -64,7 +71,7 @@ const Page = () => {
 								<li>
 									<button className="button" onClick={handleLangOpt}>
 										EN
-										<i class="fas fa-caret-down"></i>
+										<i className="fas fa-caret-down"></i>
 									</button>
 									{!hideLangOpt &&
 										<div className="langOptions">
