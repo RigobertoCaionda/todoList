@@ -3,9 +3,9 @@ import {HeaderArea} from './styled';
 import {PageContainer} from '../../mainComponents';
 import logo from '../../../images/logo.svg';
 import {Link} from 'react-router-dom';
-//import {isLogged} from '../../../helpers/AuthHandler';
+import {isLogged} from '../../../helpers/AuthHandler';
 const Page = () => {
-	//let logged = isLogged();
+	let logged = isLogged();
 	/*if (logged) {
 		alert('Esta logado!');
 	}else {
