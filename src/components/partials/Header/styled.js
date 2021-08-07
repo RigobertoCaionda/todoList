@@ -27,6 +27,20 @@ export const HeaderArea = styled.header`
 				color: #000;
 			}
 			}
+			.myAccountOptions {
+				button {
+					border: 0;
+					outline: 0;
+					background: none;
+					text-align: left;
+					cursor: pointer;
+					padding: 5px 70px 5px 20px;
+					color: #262626;
+					&: hover {
+						background-color: #efefef;
+					}
+				}
+			}
 			.langOptions {
 				button {
 					border: 0;
@@ -48,6 +62,7 @@ export const HeaderArea = styled.header`
 				padding: 5px 0;
 				margin-top: 15px;
 				border-radius: 3px;
+				z-index: 999;
 				a {
 					color: #262626;
 					font-size: 0.9rem;

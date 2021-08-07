@@ -3,14 +3,10 @@ import {HeaderArea} from './styled';
 import {PageContainer} from '../../mainComponents';
 import logo from '../../../images/logo.svg';
 import {Link} from 'react-router-dom';
-//import {isLogged} from '../../../helpers/AuthHandler';
+import {isLogged, doLogout} from '../../../helpers/AuthHandler';
 const Page = () => {
-	//let logged = isLogged();
-	/*if (logged) {
-		alert('Esta logado!');
-	}else {
-		alert('nao esta logado!');
-	}*/
+	let logged = isLogged();
+	
 	const [hideAccOpt, setHideAccOpt] = useState(true);
 	const [hideLangOpt, setHideLangOpt] = useState(true);
 
@@ -33,6 +29,13 @@ const Page = () => {
 			}
 			setHideAccOpt(!hideAccOpt);
 	}
+	const handleLogout = () => {
+		doLogout();
+		window.location.href = '/';
+	}
+	const handleLangClick = () => {
+		alert('Funcionalidade indisponível no momento!');
+	}
 
 	return (
 			<HeaderArea>
@@ -47,7 +50,9 @@ const Page = () => {
 							<ul>
 								<li><Link to="/top_videos">Top Videos</Link></li>
 								<li><Link to="/top_searches">Top Searches</Link></li>
-								<li><Link to="/recently_viewed">My Recently Viewed</Link></li>
+								{logged &&
+									<li><Link to="/recently_viewed">My Recently Viewed</Link></li>
+								}
 								<li>
 									<form method="GET" action="/make_search">
 										<input type="text" placeholder="Search" name="q"/>
@@ -61,7 +66,12 @@ const Page = () => {
 									</button>
 									{!hideAccOpt &&
 										<div className="myAccountOptions">
-											<Link to="/login">Login</Link>
+											{logged &&
+												<button onClick={handleLogout}>Logout</button>
+											}
+											{!logged &&
+												<Link to="/login">Login</Link>
+											}
 											<Link to="/my_playlists">My Playlists</Link>
 											<Link to="/my_stats">My Stats</Link>
 											<Link to="/upload">Upload</Link>
@@ -75,8 +85,8 @@ const Page = () => {
 									</button>
 									{!hideLangOpt &&
 										<div className="langOptions">
-											<button>ENGLISH</button>
-											<button>PORTUGUESE</button>
+											<button onClick={handleLangClick}>ENGLISH</button>
+											<button onClick={handleLangClick}>PORTUGUESE</button>
 										</div>
 									}
 								</li>

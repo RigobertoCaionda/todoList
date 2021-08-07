@@ -70,6 +70,13 @@ const myAPI = {
 			);
 		return json.items;
 
+	},
+	getVideo: async (id)=> {//Duvidas aqui
+		const json = await apiFetchGet(
+				`/Search/k_uz1296mq/${id}`,
+				{id}
+			);
+		return json;
 	}
 }
 
