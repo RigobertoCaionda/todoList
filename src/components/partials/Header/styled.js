@@ -6,6 +6,16 @@ export const HeaderArea = styled.header`
 	align-items: center;
 	background-color: #5097c1;
 	min-height: 90px;
+	.openIcon {
+		position: absolute;
+		right: 15px;
+		top: 10px;
+		display: none;
+		font-size: 2rem;
+		i {
+			color: #fff;
+		}
+	}
 	.logoArea {
 		width: 110px;
 		img {
@@ -118,4 +128,10 @@ export const HeaderArea = styled.header`
 			margin-right: 0;
 		}
 	}
+`;
+export const HeaderHelper = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
 `;

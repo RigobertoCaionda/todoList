@@ -6,6 +6,12 @@ export const PageContainer = styled.div`
 	align-items: center;
 	width: 1000px;
 	margin: auto;
+	@media(max-width: 600px) {
+		width: 85%;
+		justify-content: flex-start;
+		align-items: flex-start;
+		margin: 0;
+	}
 `;
 export const PageTitle = styled.h1`
 	font-size: 27px;

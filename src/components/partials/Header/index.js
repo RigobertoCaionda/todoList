@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {HeaderArea} from './styled';
+import {HeaderArea, HeaderHelper} from './styled';
 import {PageContainer} from '../../mainComponents';
 import logo from '../../../images/logo.svg';
 import {Link} from 'react-router-dom';
@@ -40,11 +40,15 @@ const Page = () => {
 	return (
 			<HeaderArea>
 				<PageContainer>
+				<HeaderHelper>
 					<Link to="/">
 						<div className="logoArea">
 							<img src={logo} alt=""/>
 						</div>
 					</Link>
+					<div className="openIcon">
+						<i className="fas fa-bars"></i>
+					</div>
 					<div className="menuArea">
 						<nav>
 							<ul>
@@ -93,6 +97,7 @@ const Page = () => {
 							</ul>
 						</nav>
 					</div>
+					</HeaderHelper>
 				</PageContainer>
 			</HeaderArea>
 		);
