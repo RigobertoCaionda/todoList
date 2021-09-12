@@ -49,6 +49,7 @@ const Page = () => {
 	if (minutes < 10) {
 		minutes = `0${minutes}`;
 	}
+	let timer;
 	const match = () => {
 		let d = new Date();
 		let month = (d.getMonth() + 1);
@@ -74,14 +75,15 @@ const Page = () => {
 			// eslint-disable-next-line
 			tasks.map((item, index)=>{
 				if ((tasks[index].chosenDate === date) && (tasks[index].chosenTime === time)) {
-					clearTimeout(timer);
+					clearInterval(timer);
 					setRing(tasks[index].title);
 					document.querySelector('audio').play();
+
 				}
 			});
 		}
 	}
-	let timer = setInterval(match, 1000);
+	timer = setInterval(match, 1000);
 	const handleSearch = (e) => {
 		if (e.keyCode === 13 && search !== '') {
 			dispatch({
