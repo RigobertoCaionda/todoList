@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {
 		HomeArea, 
 		SearchInput, 
@@ -25,7 +25,6 @@ const Page = () => {
 	let year = date.getFullYear();
 	let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 
 	'October', 'November', 'December'];
-	let cDate = `${months[monthIndex]} ${day}, ${year}`;
 	let hours = date.getHours();
 	let minutes = date.getMinutes();
 	let time = `${hours}:${minutes}`;
@@ -42,6 +41,7 @@ const Page = () => {
 		default:
 		day = `${day}th`;
 	}
+	let cDate = `${months[monthIndex]} ${day}, ${year}`;
 	if (hours < 10) {
 		hours = `0${hours}`;
 	}
@@ -49,8 +49,9 @@ const Page = () => {
 	if (minutes < 10) {
 		minutes = `0${minutes}`;
 	}
-	let timer;
-	const match = () => {
+
+	useEffect(()=>{
+		const match = () => {
 		let d = new Date();
 		let month = (d.getMonth() + 1);
 		if (month < 10) {
@@ -78,12 +79,17 @@ const Page = () => {
 					clearInterval(timer);
 					setRing(tasks[index].title);
 					document.querySelector('audio').play();
+					setTimeout(()=>{
+						timer = setInterval(match, 1000);
+					}, 60000);
 
 				}
 			});
 		}
 	}
-	timer = setInterval(match, 1000);
+	let timer = setInterval(match, 1000);
+	},[tasks]);
+
 	const handleSearch = (e) => {
 		if (e.keyCode === 13 && search !== '') {
 			dispatch({
